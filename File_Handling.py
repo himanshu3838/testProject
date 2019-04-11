@@ -1,5 +1,5 @@
 #Global Imports.
-
+from xml_parser import XmlParser
 
 class FileHandling:
 	def __init__(self,Filename,FilePath):
@@ -22,6 +22,10 @@ class FileHandling:
 		return listOfVMNames
 		
 if __name__ == '__main__':
-	obj = FileHandling(r'XXXXXXXXXXXXXXXXX',r'XXXXXXXXXXXXXXXXXXXXXXXXXXX')
+	obj1 = XmlParser(Fake_Path)
+	listOfElements=obj1.ParseXML()
+	filename = listOfElements[0]
+	filepath = listOfElements[1]
+	obj = FileHandling(filename,filepath)
 	print(obj.CreateListOfFileObj())
 			

@@ -6,6 +6,8 @@ import paramiko
 #import sys
 import subprocess
 
+#Local imports
+from xml_parser import XmlParser
 
 class RemoteConnection:
 	def __init__(self):
@@ -62,8 +64,13 @@ class RemoteConnection:
 		print("SSH Channel closed")
 		
 if __name__ == '__main__':
+	obj1 = XmlParser(Fake_Path)
+	listOfElements=obj1.ParseXML()
+	username = listOfElements[2]
+	hostname = listOfElements[3]
+	password = listOfElements[4]
 	obj = RemoteConnection()
-	obj.sshConnection('XXXXXXXX','XX.XX.XX.XX','XXXXXXXXXXXXX')
+	obj.sshConnection(Username=username,Hostname=hostname,Password=password)
 	obj.executeCommand("ls -lrt")
 	obj.printOutput()
 	obj.closeChannel()
